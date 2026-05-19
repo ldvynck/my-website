@@ -287,7 +287,7 @@ button:hover {
     flex-wrap: wrap;
     align-items: center;
     gap: 10px;
-    max-width: 900px;
+    max-width: calc(100vw - 360px);
     background: #ffffff;
     padding: 12px;
     border: 3px solid #000000;
@@ -301,11 +301,13 @@ button:hover {
     gap: 6px;
     font-family: "Courier New", monospace;
     font-weight: bold;
+    font-size: 13px;
 }
 
 .urban-ui select,
 .urban-ui input,
-.urban-inspector input {
+.urban-inspector input,
+.urban-inspector select {
     border: 3px solid #000000;
     background: #ffffff;
     font-family: "Courier New", monospace;
@@ -314,16 +316,20 @@ button:hover {
 }
 
 .urban-ui p {
-    margin: 0 0 0 8px;
+    width: 100%;
+    margin: 2px 0 0 0;
     font-family: "Courier New", monospace;
     font-weight: bold;
+    font-size: 13px;
 }
 
 .urban-inspector {
     position: fixed;
     right: 22px;
     bottom: 22px;
-    width: 260px;
+    width: 300px;
+    max-height: calc(100vh - 110px);
+    overflow-y: auto;
     background: #ffffff;
     border: 3px solid #000000;
     padding: 14px;
@@ -338,6 +344,25 @@ button:hover {
 
 .urban-inspector p {
     line-height: 1.4;
+    font-size: 13px;
+}
+
+.urban-inspector label {
+    justify-content: space-between;
+    margin: 8px 0;
+}
+
+.urban-inspector input,
+.urban-inspector select {
+    width: 140px;
+}
+
+.check-row {
+    justify-content: flex-start !important;
+}
+
+.check-row input {
+    width: auto;
 }
 
 #urbanCanvas {
