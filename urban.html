@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Urban Growth Simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="game-page">
+
+    <nav class="top-bar">
+        <a href="index.html" class="home-link">home</a>
+        <div class="nav-right">
+            <a href="about.html">about</a>
+            <a href="contact.html">contact</a>
+        </div>
+    </nav>
+
+    <canvas id="urbanCanvas"></canvas>
+
+    <section class="urban-ui">
+        <button onclick="toggleUrban()" id="urbanToggle">start</button>
+        <button onclick="stepUrban()">step</button>
+        <button onclick="randomScenario()">random</button>
+        <button onclick="clearUrban()">clear</button>
+
+        <label>
+            tool
+            <select id="toolSelect">
+                <option value="inspect">inspect</option>
+                <option value="land">land use</option>
+                <option value="road">road</option>
+                <option value="protected">protected</option>
+            </select>
+        </label>
+
+        <label>
+            land
+            <select id="landUseSelect">
+                <option value="empty">empty</option>
+                <option value="residential">residential</option>
+                <option value="commercial">commercial</option>
+                <option value="industrial">industrial</option>
+                <option value="mixed">mixed-use</option>
+                <option value="public">public</option>
+                <option value="green">green</option>
+                <option value="water">water</option>
+            </select>
+        </label>
+
+        <label>
+            road
+            <select id="roadSelect">
+                <option value="none">none</option>
+                <option value="local">local</option>
+                <option value="collector">collector</option>
+                <option value="arterial">arterial</option>
+            </select>
+        </label>
+
+        <label>
+            speed
+            <input id="speedInput" type="range" min="50" max="1000" value="300">
+        </label>
+
+        <p id="urbanStats">population: 0 | jobs: 0 | urban area: 0%</p>
+    </section>
+
+    <aside class="urban-inspector" id="urbanInspector">
+        <h3>tile</h3>
+        <p id="tileInfo">select a tile</p>
+
+        <label>density <input id="densityInput" type="number" min="0" max="5" value="0"></label>
+        <label>income <input id="incomeInput" type="number" min="0" max="100" value="50"></label>
+        <label>age <input id="ageInput" type="number" min="0" max="100" value="35"></label>
+        <label>land value <input id="valueInput" type="number" min="0" max="100" value="50"></label>
+
+        <button onclick="applyTileEdit()">apply tile edit</button>
+    </aside>
+
+    <script src="urban.js"></script>
+</body>
+</html>
