@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tetris</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="top-bar">
+        <a href="home.html" class="home-link">home</a>
+        <div class="nav-right">
+            <a href="about.html">about</a>
+            <a href="contact.html">contact</a>
+        </div>
+    </nav>
+
+    <main class="page">
+        <h1>tetris</h1>
+
+        <section class="tetris-layout">
+            <canvas id="tetrisCanvas" width="300" height="600"></canvas>
+
+            <aside class="tetris-panel">
+                <p id="tetrisScore">score: 0</p>
+                <p id="tetrisLines">lines: 0</p>
+                <p id="tetrisLevel">level: 1</p>
+                <p id="tetrisMessage">ready</p>
+
+                <button onclick="restartTetris()">restart</button>
+
+                <p class="controls">
+                    ← → move<br>
+                    ↑ rotate<br>
+                    ↓ soft drop<br>
+                    space hard drop<br>
+                    p pause
+                </p>
+            </aside>
+        </section>
+    </main>
+
+    <script src="tetris.js"></script>
+</body>
+</html>

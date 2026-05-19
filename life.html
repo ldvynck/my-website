@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>conway's game of life</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="game-page">
+
+    <nav class="top-bar">
+        <a href="home.html" class="home-link">home</a>
+        <div class="nav-right">
+            <a href="about.html">about</a>
+            <a href="contact.html">contact</a>
+        </div>
+    </nav>
+
+    <canvas id="lifeCanvas"></canvas>
+
+    <div class="life-ui">
+        <button onclick="toggleLife()" id="lifeToggle">start</button>
+        <button onclick="slowDownLife()">slower</button>
+        <button onclick="speedUpLife()">faster</button>
+        <button onclick="randomizeGrid()">random</button>
+        <button onclick="clearGrid()">clear</button>
+
+    	<label>
+            birth
+            <input id="birthRule" value="3">
+    	</label>
+
+    	<label>
+            survive
+            <input id="surviveRule" value="2,3">
+    	</label>
+
+    	<label>
+            range
+            <input id="rangeRule" type="number" min="1" max="4" value="1">
+    	</label>
+
+    	<button onclick="updateRules()">apply</button>
+
+        <p id="lifeStats">generation: 0 | speed: 100 ms</p>
+    </div>
+
+    <script src="life.js"></script>
+</body>
+</html>
