@@ -15,6 +15,10 @@ let middleDragging = false;
 let lastMouseX = 0;
 let lastMouseY = 0;
 
+let draggingBody = false;
+let velocityMode = false;
+let velocityStart = null;
+
 function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight - TOP_BAR_HEIGHT;
@@ -108,6 +112,7 @@ function applyBodyEdit() {
     selectedBody.radius = Number(document.getElementById("radiusInput").value);
     selectedBody.vx = Number(document.getElementById("vxInput").value);
     selectedBody.vy = Number(document.getElementById("vyInput").value);
+    selectedBody.trail = [];
 
     updateEditor();
 }
@@ -233,6 +238,8 @@ function drawSimulation() {
         drawBody(body);
     }
 
+    drawVelocityPreview();
+
     drawStats();
 }
 
@@ -349,6 +356,23 @@ function addBodyAtMouse(x, y) {
     updateEditor();
 }
 
+function drawVelocityPreview() {
+    if (!selectedBody) return;
+
+    const p = worldToScreen(selectedBody.x, selectedBody.y);
+
+    ctx.strokeStyle = "#000000";
+    ctx.lineWidth = 2;
+
+    ctx.beginPath();
+    ctx.moveTo(p.x, p.y);
+    ctx.lineTo(
+        p.x + selectedBody.vx * 18 * zoom,
+        p.y + selectedBody.vy * 18 * zoom
+    );
+    ctx.stroke();
+}
+
 canvas.addEventListener("mousedown", function(event) {
     if (event.button === 1) {
         middleDragging = true;
@@ -369,21 +393,53 @@ canvas.addEventListener("mousedown", function(event) {
 
     if (event.button === 0) {
         selectBody(x, y);
+
+        if (selectedBody && !running) {
+            draggingBody = true;
+        }
+    }
+
+    if (event.button === 2 && selectedBody && !running) {
+        velocityMode = true;
+        velocityStart = screenToWorld(x, y);
     }
 });
 
 canvas.addEventListener("mousemove", function(event) {
-    if (!middleDragging) return;
+    const rect = canvas.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
 
-    cameraX -= (event.clientX - lastMouseX) / zoom;
-    cameraY -= (event.clientY - lastMouseY) / zoom;
+    if (middleDragging) {
+        cameraX -= (event.clientX - lastMouseX) / zoom;
+        cameraY -= (event.clientY - lastMouseY) / zoom;
 
-    lastMouseX = event.clientX;
-    lastMouseY = event.clientY;
+        lastMouseX = event.clientX;
+        lastMouseY = event.clientY;
+        return;
+    }
+
+    if (draggingBody && selectedBody && !running) {
+        const world = screenToWorld(x, y);
+        selectedBody.x = world.x;
+        selectedBody.y = world.y;
+        selectedBody.trail = [];
+        updateEditor();
+    }
+
+    if (velocityMode && selectedBody && !running) {
+        const world = screenToWorld(x, y);
+        selectedBody.vx = (world.x - velocityStart.x) * 0.03;
+        selectedBody.vy = (world.y - velocityStart.y) * 0.03;
+        selectedBody.trail = [];
+        updateEditor();
+    }
 });
 
 window.addEventListener("mouseup", function() {
     middleDragging = false;
+    draggingBody = false;
+    velocityMode = false;
 });
 
 canvas.addEventListener("wheel", function(event) {
