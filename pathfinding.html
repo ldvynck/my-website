@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pathfinding Visualizer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="game-page">
+
+    <nav class="top-bar">
+        <a href="index.html" class="home-link">home</a>
+        <div class="nav-right">
+            <a href="about.html">about</a>
+            <a href="contact.html">contact</a>
+        </div>
+    </nav>
+
+    <canvas id="pathCanvas"></canvas>
+
+    <section class="sim-ui">
+        <button onclick="runPathfinding()" id="runButton">run</button>
+        <button onclick="stepSearch()">step</button>
+        <button onclick="clearSearch()">clear path</button>
+        <button onclick="clearWalls()">clear walls</button>
+        <button onclick="resetGrid()">reset</button>
+
+        <label>algorithm
+            <select id="algorithmSelect">
+                <option value="astar">A*</option>
+                <option value="dijkstra">Dijkstra</option>
+                <option value="bfs">Breadth-first search</option>
+                <option value="greedy">Greedy best-first</option>
+            </select>
+        </label>
+
+        <label>tool
+            <select id="toolSelect">
+                <option value="wall">wall</option>
+                <option value="erase">erase</option>
+                <option value="start">start</option>
+                <option value="end">end</option>
+                <option value="weight">weight</option>
+            </select>
+        </label>
+
+        <label>preset
+            <select id="presetSelect">
+                <option value="blank">blank</option>
+                <option value="maze">maze</option>
+                <option value="corridor">corridor</option>
+                <option value="rooms">rooms</option>
+                <option value="weighted">weighted field</option>
+            </select>
+        </label>
+
+        <button onclick="applyPreset()">apply preset</button>
+
+        <label>speed
+            <input id="speedInput" type="range" min="1" max="80" value="20">
+        </label>
+
+        <p id="pathStats">ready</p>
+    </section>
+
+    <script src="pathfinding.js"></script>
+</body>
+</html>
