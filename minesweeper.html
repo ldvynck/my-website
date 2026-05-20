@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Minesweeper</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="top-bar">
+    <a href="index.html" class="home-link">home</a>
+    <div class="nav-right">
+        <a href="about.html">about</a>
+        <a href="contact.html">contact</a>
+    </div>
+</nav>
+
+<main class="page">
+    <h1>minesweeper</h1>
+
+    <section class="game-box">
+        <canvas id="minesCanvas" width="480" height="480"></canvas>
+
+        <div class="button-row">
+            <button onclick="restartMines()">restart</button>
+        </div>
+
+        <p id="minesStatus">left click: reveal | right click: flag</p>
+    </section>
+</main>
+
+<script src="minesweeper.js"></script>
+</body>
+</html>
