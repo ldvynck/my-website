@@ -122,7 +122,7 @@ function drawCell(r, c) {
     } else if (r === end.r && c === end.c) {
         ctx.fillStyle = "#000000";
     } else if (cell.path) {
-        ctx.fillStyle = "#000000";
+        ctx.fillStyle = "#4caf50";
     } else if (cell.frontier) {
         ctx.fillStyle = "#d9d9d9";
     } else if (cell.visited) {
