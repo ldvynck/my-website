@@ -1,7 +1,5 @@
 const projects = [
     { title: "8 Ball Pool", url: "pool.html" },
-    { title: "Wordle", url: "wordle.html" },
-    { title: "Monte Carlo Pi", url: "pi.html" },
     { title: "Chess", url: "chess.html" },
     { title: "Conway's Game of Life", url: "life.html" },
     { title: "Tetris", url: "tetris.html" },
