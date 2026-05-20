@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Asteroids</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="game-page">
+
+<nav class="top-bar">
+    <a href="index.html" class="home-link">home</a>
+    <div class="nav-right">
+        <a href="about.html">about</a>
+        <a href="contact.html">contact</a>
+    </div>
+</nav>
+
+<canvas id="asteroidsCanvas"></canvas>
+
+<section class="sim-ui">
+    <button onclick="restartAsteroids()">restart</button>
+    <button onclick="togglePause()" id="pauseButton">pause</button>
+    <p>← → rotate | ↑ thrust | space shoot</p>
+</section>
+
+<script src="asteroids.js"></script>
+</body>
+</html>
