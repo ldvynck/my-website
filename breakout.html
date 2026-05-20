@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Breakout</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="game-page">
+
+<nav class="top-bar">
+    <a href="index.html" class="home-link">home</a>
+    <div class="nav-right">
+        <a href="about.html">about</a>
+        <a href="contact.html">contact</a>
+    </div>
+</nav>
+
+<canvas id="breakoutCanvas"></canvas>
+
+<section class="sim-ui">
+    <button onclick="restartBreakout()">restart</button>
+    <button onclick="togglePause()" id="pauseButton">pause</button>
+    <label>speed
+        <input id="speedSlider" type="range" min="0.7" max="1.8" step="0.1" value="1">
+    </label>
+    <p>move mouse or use ← →</p>
+</section>
+
+<script src="breakout.js"></script>
+</body>
+</html>
